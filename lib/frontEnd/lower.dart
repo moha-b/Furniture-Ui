@@ -1,17 +1,18 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:furniture_ui/Widgets/Colors.dart';
-import 'package:furniture_ui/backEnd/trending.dart';
+import 'package:furniture_ui/backEnd/popular.dart';
 
-class Upper extends StatefulWidget {
-  const Upper({Key? key}) : super(key: key);
+import '../Widgets/Colors.dart';
+
+class Lower extends StatefulWidget {
+  const Lower({Key? key}) : super(key: key);
 
   @override
-  State<Upper> createState() => _UpperState();
+  State<Lower> createState() => _LowerState();
 }
 
-class _UpperState extends State<Upper> {
+class _LowerState extends State<Lower> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,9 +39,9 @@ class _UpperState extends State<Upper> {
             child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
-              itemCount: info.length,
+              itemCount: pop.length,
               itemBuilder: (context, index) {
-                trend data = info[index];
+                popular data = pop[index];
                 return Container(
                   margin: EdgeInsets.symmetric(horizontal: 6),
                   padding: EdgeInsets.all(10),

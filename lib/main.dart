@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:furniture_ui/Widgets/Colors.dart';
+import 'package:furniture_ui/frontEnd/lower.dart';
 import 'package:furniture_ui/frontEnd/upper.dart';
 
 void main() {
@@ -114,7 +115,21 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
-          Upper(),
+          SizedBox(
+            height: 10,
+          ),
+          // first Slider -------
+          SizedBox(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height / 3.5,
+              child: Upper()),
+          SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height / 3.5,
+              child: Lower()),
         ],
       ),
     );

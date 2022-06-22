@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_local_variable
 
 import 'package:flutter/material.dart';
+import 'package:furniture_ui/backEnd/categories.dart';
 import 'package:furniture_ui/backEnd/popular.dart';
 
 import '../Widgets/Colors.dart';
@@ -21,7 +22,7 @@ class _LowerState extends State<Lower> {
         children: [
           Row(
             children: [
-              Text("TRENDING PRODUCT"),
+              Text("PRODUCT Categories"),
               Expanded(
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 10),
@@ -32,6 +33,24 @@ class _LowerState extends State<Lower> {
               Text("See All")
             ],
           ),
+          SizedBox(
+              height: 50,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                itemCount: cat.length,
+                itemBuilder: (context, index) {
+                  Categories data = cat[index];
+                  return Container(
+                    height: 30,
+                    child: Text(data.categories),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Colors.black,
+                    ),
+                  );
+                },
+              )),
           SizedBox(
             height: 10,
           ),

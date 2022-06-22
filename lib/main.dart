@@ -75,62 +75,66 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Container(
-                margin: EdgeInsets.only(left: 20, top: 10),
-                width: MediaQuery.of(context).size.width - 120,
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    hintText: "Search",
-                    fillColor: Colors.black,
-                    filled: true,
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: secondary,
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(left: 20, top: 10),
+                  width: MediaQuery.of(context).size.width - 120,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Search",
+                      fillColor: Colors.black,
+                      filled: true,
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: secondary,
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)),
                     ),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Container(
-                width: 59,
-                height: 59,
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(10)),
-                child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.filter_alt_outlined,
-                      color: secondary,
-                    )),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          // first Slider -------
-          SizedBox(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height / 3.5,
-              child: Upper()),
-          SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height / 3.5,
-              child: Lower()),
-        ],
+                SizedBox(
+                  width: 10,
+                ),
+                Container(
+                  width: 59,
+                  height: 59,
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.filter_alt_outlined,
+                        color: secondary,
+                      )),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            // first Slider -----------
+            SizedBox(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height / 3.5,
+                child: Upper()),
+            SizedBox(
+              height: 15,
+            ),
+            // second Slider ----------
+            SizedBox(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height / 3.5,
+                child: Lower()),
+          ],
+        ),
       ),
     );
   }

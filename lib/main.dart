@@ -25,75 +25,76 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+    int _currentIndex = 0;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            width: MediaQuery.of(context).size.width,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Icon(
-                  Icons.sort_rounded,
-                  color: Colors.black,
-                  size: 30,
-                ),
-                Row(
-                  children: [
-                    Stack(
-                      children: [
-                        Icon(Icons.notifications_none_rounded,
-                            color: Colors.black, size: 30),
-                        Positioned(
-                          top: 4,
-                          right: 8,
-                          child: ClipOval(
-                            child: Container(
-                              color: primary,
-                              width: 6,
-                              height: 6,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Icon(
-                      Icons.shopping_cart_outlined,
-                      color: Colors.black,
-                      size: 30,
-                    ),
-                  ],
-                )
-              ],
-            ),
-          )
-        ],
-      ),
       body: Container(
-        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30), color: background),
+        height: height - 90,
         child: Column(
           children: [
+            SizedBox(
+              height: 60,
+            ),
+            // app bar
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+              width: width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(
+                    Icons.sort_rounded,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+                  Row(
+                    children: [
+                      Stack(
+                        children: [
+                          Icon(Icons.notifications_none_rounded,
+                              color: Colors.black, size: 30),
+                          Positioned(
+                            top: 4,
+                            right: 8,
+                            child: ClipOval(
+                              child: Container(
+                                color: primary,
+                                width: 6,
+                                height: 6,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Icon(
+                        Icons.shopping_cart_outlined,
+                        color: Colors.black,
+                        size: 30,
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            // search bar ------------
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Container(
                   margin: EdgeInsets.only(left: 20, top: 10),
-                  width: MediaQuery.of(context).size.width - 120,
+                  width: width - 120,
                   child: TextFormField(
                     decoration: InputDecoration(
                       hintText: "Search",
-                      fillColor: Colors.black,
+                      fillColor: secondary,
                       filled: true,
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: secondary,
-                      ),
+                      prefixIcon: Icon(Icons.search),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
                     ),
@@ -106,36 +107,56 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 59,
                   height: 59,
                   decoration: BoxDecoration(
-                      color: Colors.black,
+                      color: secondary,
                       borderRadius: BorderRadius.circular(10)),
                   child: IconButton(
                       onPressed: () {},
                       icon: Icon(
                         Icons.filter_alt_outlined,
-                        color: secondary,
                       )),
                 ),
               ],
             ),
             SizedBox(
-              height: 10,
+              height: 15,
             ),
             // first Slider -----------
             SizedBox(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height / 3.5,
-                child: Upper()),
+                width: double.infinity, height: height / 3.9, child: Upper()),
             SizedBox(
               height: 15,
             ),
             // second Slider ----------
             SizedBox(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height / 3.5,
-                child: Lower()),
+                width: double.infinity, height: height / 3.3, child: Lower()),
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: primary,
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState() {
+              _currentIndex = index;
+            }
+          },
+          selectedItemColor: Colors.white,
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.vertical_shades_closed_rounded), label: ""),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home_outlined,
+                  color: Colors.white,
+                ),
+                label: ""),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person_outline,
+                  color: Colors.white,
+                ),
+                label: ""),
+          ]),
     );
   }
 }

@@ -30,11 +30,17 @@ class _LowerState extends State<Lower> {
                   color: Colors.black,
                 ),
               ),
-              Text("See All")
+              Text(
+                "See All",
+                style: TextStyle(color: primary),
+              )
             ],
           ),
           SizedBox(
-              height: 50,
+            height: 5,
+          ),
+          SizedBox(
+              height: 40,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
@@ -42,17 +48,22 @@ class _LowerState extends State<Lower> {
                 itemBuilder: (context, index) {
                   Categories data = cat[index];
                   return Container(
+                    margin: EdgeInsets.only(right: 10),
                     height: 30,
-                    child: Text(data.categories),
+                    width: 70,
+                    alignment: Alignment.center,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      color: Colors.black,
+                      color: secondary,
+                    ),
+                    child: Text(
+                      data.categories,
                     ),
                   );
                 },
               )),
           SizedBox(
-            height: 10,
+            height: 5,
           ),
           Expanded(
             child: ListView.builder(
@@ -66,68 +77,85 @@ class _LowerState extends State<Lower> {
                   padding: EdgeInsets.all(10),
                   width: 161,
                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.blueAccent,
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.black),
-                  child: Column(children: [
-                    /////// image
-                    Container(
-                      width: 140,
-                      height: 110,
-                      color: Colors.grey,
-                      child: Image(
-                        image: AssetImage(data.image),
-                        fit: BoxFit.cover,
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Column(children: [
+                      /////// image
+                      Container(
+                        width: 140,
+                        height: 110,
+                        color: Colors.grey,
+                        child: Image(
+                          image: AssetImage(data.image),
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    // product name
-                    Container(
-                      child: Text(
-                        data.name,
-                        style: TextStyle(color: Colors.white),
+                      SizedBox(
+                        height: 5,
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                      // product name
+                      Container(
+                        child: Text(
+                          data.name,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 3,
+                      ),
 
-                    /// size & icon
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "\$${data.price}",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          Stack(
-                            children: [
-                              Container(
-                                width: 20,
-                                height: 20,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.white),
+                      /// price & icon
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "\$${data.price}",
+                            ),
+                            SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    width: 20,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: secondary),
+                                  ),
+                                  Positioned(
+                                    left: 3,
+                                    bottom: 2,
+                                    child: Icon(
+                                      Icons.shopping_cart_outlined,
+                                      color: primary,
+                                      size: 14,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Positioned(
-                                left: 3,
-                                bottom: 2,
-                                child: Icon(
-                                  Icons.shopping_cart_outlined,
-                                  color: primary,
-                                  size: 14,
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  ]),
+                    ]),
+                  ),
                 );
               },
             ),
